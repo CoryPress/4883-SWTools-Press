@@ -7,6 +7,7 @@ import urllib
 import json
 import sys
 import time
+import os
 scraper = BeautifulScraper()
 
 gameids = []
