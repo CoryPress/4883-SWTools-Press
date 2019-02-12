@@ -61,7 +61,9 @@ files = getFiles(path)
 
 files = sorted(files)
 
-RushingData = {}
+PlayerData = {}
+
+plays = 0
 
 # loop through files
 for file in files:
@@ -78,18 +80,25 @@ for file in files:
                 #print(driveid)
                 if driveid != 'crntdrv':
                     for playid,playdata in drivedata['plays'].items():
+                        plays += 1
                         for playerid, player in playdata["players"].items():
                           if playerid != 0:
                             for playerstat in player:
-                              if playerid not in RushingData:
-                               RushingData[playerid] = {}
-                               RushingData[playerid]["name"] = playerstat["playerName"]
-                               RushingData[playerid]["teams"] = []
-                               RushingData[playerid]["teams"].append(playerstat["clubcode"])
-                               RushingData[playerid]["rushes"] = []
+                              if playerid not in PlayerData:
+                                  PlayerData[playerid] = {}
+                                  PlayerData[playerid]["name"] = playerstat["playerName"]
+                                  PlayerData[playerid]["teams"] = []
+                                  PlayerData[playerid]["teams"].append(playerstat["clubcode"])
+                                  PlayerData[playerid]["rushes"] = []
+                                  PlayerData[playerid]["passes"] = []
+                                  PlayerData[playerid]["fieldgoals"] = []
+                              if playerstat["clubcode"] not in PlayerData[playerid]["teams"]:
+                                PlayerData[playerid]["teams"].append(playerstat["clubcode"])
                               if playerstat["statId"] in [10, 11]:
-                                RushingData[playerid]["rushes"].append(playerstat["yards"])
+                                PlayerData[playerid]["rushes"].append(playerstat["yards"])
+                              if playerstat["statId"] in [15, 16]:
+                                PlayerData[playerid]["passes"].append(playerstat["yards"])
 
 
-print(RushingData)
+print(PlayerData)
                 
