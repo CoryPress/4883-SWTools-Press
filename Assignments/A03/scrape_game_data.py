@@ -62,10 +62,16 @@ print(len(gameids))
 # Download all game json files
 #
 
+#create GameData folder
+newfolderpath = "./GameData/"
+if not os.path.exists(newfolderpath):
+    os.makedirs(newfolderpath)        
+
+
 games = 0
 for gameid in gameids:
     #progress
-    if games%25 == 0:
+    if games%100 == 0:
         print("progress = %" + str(games/2670*100))
     games += 1
     
@@ -75,3 +81,4 @@ for gameid in gameids:
     f = open("./GameData/"+gameid+".json","w")
     f.write(json.dumps(data))
     f.close()
+
