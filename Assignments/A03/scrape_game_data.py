@@ -72,6 +72,6 @@ for gameid in gameids:
     with urllib.request.urlopen("http://www.nfl.com/liveupdate/game-center/"+gameid+"/"+gameid+"_gtd.json") as url:
         data = json.loads(url.read().decode())
     
-    f = open("./GameData/game_"+gameid+".json","w")
+    f = open("./GameData/"+gameid+".json","w")
     f.write(json.dumps(data))
     f.close()
