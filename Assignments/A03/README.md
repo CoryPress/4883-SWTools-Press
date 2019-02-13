@@ -5,5 +5,10 @@
 * uses those game ids to find the json files with game data at http://www.nfl.com/liveupdate/game-center/
 * downloads all the game files(named GAMEID.json) into a sub directory called GameData
 ### GetPlayerStats.py
-* goes through each game file and collects all necessary data a places it in a new dictionary
+* goes through each game file and collects all necessary data for individual players
+* writes them to a dictionary
 * writes data to a file named PlayerStats.json
+### GetTeamStats.py
+* goes through each game file and collects all necessary data for teams
+* writes them to a dictionary
+* writes data to a file named TeamStats.json
