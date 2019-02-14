@@ -12,3 +12,6 @@
 * goes through each game file and collects all necessary data for teams
 * writes them to a dictionary
 * writes data to a file named TeamStats.json
+### calculate_stats.py
+* load PlayerStats.json and TeamStats.json
+* uses that data to calculate desired stats
