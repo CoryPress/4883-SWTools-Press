@@ -109,17 +109,22 @@ for file in files:
                 TeamData[homeabrv]["gamesplayed"] = 0
                 TeamData[homeabrv]["wins"] = 0
                 TeamData[homeabrv]["penaltys"] = 0
+                TeamData[homeabrv]["penaltyYards"] = 0
             if awayabrv not in TeamData:
                 TeamData[awayabrv] = {}
                 TeamData[awayabrv]["gamesplayed"] = 0
                 TeamData[awayabrv]["wins"] = 0
                 TeamData[awayabrv]["penaltys"] = 0
+                TeamData[awayabrv]["penaltyYards"] = 0
             #add one to games played
             TeamData[homeabrv]["gamesplayed"] += 1
             TeamData[awayabrv]["gamesplayed"] += 1
             #add penaltys to total
             TeamData[homeabrv]["penaltys"] += homestats["pen"]
+            TeamData[homeabrv]["penaltyYards"] += homestats["penyds"]
             TeamData[awayabrv]["penaltys"] += awaystats["pen"]
+            TeamData[awayabrv]["penaltyYards"] += awaystats["penyds"]
+            
             #find winner and add one to winning teams total wins
             if gamedata["home"]["score"]["T"] > gamedata["away"]["score"]["T"]:
                 TeamData[homeabrv]["wins"] += 1
