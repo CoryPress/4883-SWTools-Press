@@ -7,11 +7,11 @@
 ### GetPlayerStats.py
 * goes through each game file and collects all necessary data for individual players
 * writes them to a dictionary
-* writes data to a file named PlayerStats.json
+* writes data to a file named [PlayerStats.json](https://github.com/CoryPress/4883-SWTools-Press/blob/master/Assignments/A03/PlayerStats.json)
 ### GetTeamStats.py
 * goes through each game file and collects all necessary data for teams
 * writes them to a dictionary
-* writes data to a file named TeamStats.json
+* writes data to a file named [TeamStats.json](https://github.com/CoryPress/4883-SWTools-Press/blob/master/Assignments/A03/TeamStats.json)
 ### calculate_stats.py
 * load PlayerStats.json and TeamStats.json
 * uses that data to calculate desired stats
