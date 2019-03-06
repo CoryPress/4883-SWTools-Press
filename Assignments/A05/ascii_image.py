@@ -1,7 +1,17 @@
+#Cory Press
+#A05
+#Given an image path, name of new image, font to use, and font size to use
+#   creates a new image out of the given image and recreates a greyscaled 
+#   version using character from the font
+
 import os
 import sys
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
+
+#given the path to an image and a font
+#   creates a new image out of ascii that resembles a grey-scaled version
+#   of the original
 def convertToASCII(originF, fnt):
 
     #open image and convert to grayscale
@@ -26,15 +36,12 @@ def convertToASCII(originF, fnt):
         drawOnMe.text((x,y), ch, font=fnt, fill=(0,0,0,255))
         x += fnt.size
         if x >= newImg.size[0]:
-            sys.stdout.write(".")
             x = 0
             y += fnt.size
     
 
     return newImg
 
-
-    
 
 
 originFile = "input_images/" + sys.argv[1]
@@ -44,11 +51,7 @@ fontSize = int(sys.argv[4])
 
 fnt = ImageFont.truetype(ttFont, fontSize)
 
-
-
 newImg = convertToASCII(originFile, fnt)
-
-#newImg.show()
 
 # Save the image.
 newImg.save(newFile)
