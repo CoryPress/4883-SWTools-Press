@@ -25,7 +25,7 @@ for emoji in page.find_all('span', {'class':"emoji"}):
     image_path = emoji['data-src']
     file_name = image_path[16:]
 
-    #request image and same to new file
+    #request to download image and save to new file
     urllib.request.urlretrieve(url+image_path, newfolderpath+file_name)
 
     #progress
