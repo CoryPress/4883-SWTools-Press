@@ -16,7 +16,11 @@ def convertToASCII(originF, fnt):
 
     #open image and convert to grayscale
     im = Image.open(originF)
-    im = im.convert("L")
+    
+    imlist = list(im.getdata())
+
+    #greyscale
+    #im = im.convert("L")
 
     w,h = im.size
     
@@ -27,13 +31,12 @@ def convertToASCII(originF, fnt):
     
     drawOnMe = ImageDraw.Draw(newImg)
 
-    imlist = list(im.getdata())
-
     x = 0
     y = 0
-    for val in imlist:
-        ch = ascii_chars[val // 25]
-        drawOnMe.text((x,y), ch, font=fnt, fill=(0,0,0,255))
+    for pixel in imlist:
+        avg = int((pixel[0]+pixel[1]+pixel[2])/3)
+        ch = ascii_chars[avg // 25]
+        drawOnMe.text((x,y), ch, font=fnt, fill=(pixel[0],pixel[1],pixel[2],255))
         x += fnt.size
         if x >= newImg.size[0]:
             x = 0
